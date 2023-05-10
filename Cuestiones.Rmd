@@ -40,6 +40,8 @@ consonantes #600
 
 caracteres_no_vocales <- sum(grepl("[^aeiouAEIOU]", unlist(strsplit(texto, ""))))
 print(caracteres_no_vocales) #937.
+caracteresvocales <- sum(grepl("[aeiouAEIOU]", unlist(strsplit(texto, ""))))
+caracteresa<- sum(grepl("[aA]",unlist(strsplit(texto, ""))))
 ```
 
 
@@ -75,9 +77,13 @@ reglaboxplot <- function(x) {
   return(outliers)
 }
 UScereal <- read_csv("data/UScereal.csv")
-View(UScereal)
-reglaboxplot(UScereal$fibre)
-median(UScereal$fibre)
-mutate(across)
+grasas <- UScereal$fat
+FIBRA <- UScereal$fibre
+fibra <- reglaboxplot(FIBRA)
+FIBRA <- FIBRA[-c(3,38)]
+aux <-reglaboxplot(grasas) 
+grasas<-grasas[-c(23)]
+suma <- round(sd(grasas),3)
+suma2 <- round(median(FIBRA),3)
 ```
 

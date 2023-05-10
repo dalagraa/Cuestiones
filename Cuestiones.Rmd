@@ -1,0 +1,53 @@
+---
+title: "CUESTIONES"
+author: "DAVID LARA"
+date: "2023-05-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+texto <-"Pues sepa Vuestra Merced, ante todas cosas, que a mí llaman Lázaro de Tormes, hijo de Tomé González y de Antona Pérez, naturales de Tejares, aldea de Salamanca. Mi nacimiento fue dentro del río Tormes, por la cual causa tomé el sobrenombre; y fue de esta manera: mi padre, que Dios perdone, tenía cargo de proveer una molienda de una aceña que está ribera de aquel río, en la cual fue molinero más de quince años; y, estando mi madre una noche en la aceña, preñada de mí, tomóle el parto y parióme allí. De manera que con verdad me puedo decir nacido en el río. Pues siendo yo niño de ocho años, achacaron a mi padre ciertas sangrías mal hechas en los costales de los que allí a moler venían, por lo cual fue preso, y confesó y no negó, y padeció persecución por justicia. Espero en Dios que está en la gloria, pues el Evangelio los llama bienaventurados. En este tiempo se hizo cierta armada contra moros, entre los cuales fue mi padre (que a la sazón estaba desterrado por el desastre ya dicho), con cargo de acemilero de un caballero que allá fue. Y con su señor, como leal criado, feneció su vida. Mi viuda madre, como sin marido y sin abrigo se viese, determinó arrimarse a los buenos por ser uno de ellos, y vínose a vivir a la ciudad y alquiló una casilla y metióse a guisar de comer a ciertos estudiantes, y lavaba la ropa a ciertos mozos de caballos del comendador de la Magdalena, de manera que fue frecuentando las caballerizas."
+
+espacios <- sum(grepl(" ", unlist(strsplit(texto, ""))))
+espacios #267 espacios en blanco
+
+
+caracteres_repetidos <- function(texto, repeticiones) {
+  chars <- unlist(strsplit(texto, ""))
+  frecuencias <- table(chars)
+  caracteres_repetidos <- names(frecuencias[frecuencias == repeticiones])
+  
+  return(caracteres_repetidos)
+}
+
+caracter_repetido_30 <- caracteres_repetidos(texto, 31)
+
+if (length(caracter_repetido_30) > 0) {
+  print(paste("El carácter que se repite exactamente 30 veces en el texto es:", caracter_repetido_30))
+} else {
+  print("No hay ningún carácter que se repita exactamente 30 veces en el texto.")
+}
+
+consonantes <- sum(grepl("[bcdfghjklmnpñqrstvwxyzBCDFGHJKLMNÑPQRSTVWXYZ]", unlist(strsplit(texto, ""))))
+consonantes #600
+
+caracteres_no_vocales <- sum(grepl("[^aeiouAEIOU]", unlist(strsplit(texto, ""))))
+print(caracteres_no_vocales) #937.
+```
+
+
+```{r}
+
+```
+
+
+
+```{r}
+
+```
+

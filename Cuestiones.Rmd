@@ -27,12 +27,12 @@ caracteres_repetidos <- function(texto, repeticiones) {
   return(caracteres_repetidos)
 }
 
-caracter_repetido_30 <- caracteres_repetidos(texto, 30)
+caracter_repetido_30 <- caracteres_repetidos(texto, 252)
 
 if (length(caracter_repetido_30) > 0) {
-  print(paste("El carácter que se repite exactamente 30 veces en el texto es:", caracter_repetido_30))
+  print(paste("El carácter que se repite exactamente 252 veces en el texto es:", caracter_repetido_30))
 } else {
-  print("No hay ningún carácter que se repita exactamente 30 veces en el texto.")
+  print("No hay ningún carácter que se repita exactamente 252 veces en el texto.")
 }
 
 consonantes <- sum(grepl("[bcdfghjklmnpñqrstvwxyzBCDFGHJKLMNÑPQRSTVWXYZ]", unlist(strsplit(texto, ""))))
@@ -65,6 +65,19 @@ suma_edades
 
 
 ```{r}
-
+reglaboxplot <- function(x) {
+  xs <- quantile(x, probs = 0.75,na.rm=T)
+  xi <- quantile(x, probs = 0.25,na.rm=T)
+  IQR <- xs - xi
+  up <- xs + 1.5 * IQR
+  low <- xi - 1.5 * IQR
+  outliers <- x < low | x > up
+  return(outliers)
+}
+UScereal <- read_csv("data/UScereal.csv")
+View(UScereal)
+reglaboxplot(UScereal$fibre)
+median(UScereal$fibre)
+mutate(across)
 ```
 

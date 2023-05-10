@@ -7,6 +7,8 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
 ```
 
 
@@ -25,7 +27,7 @@ caracteres_repetidos <- function(texto, repeticiones) {
   return(caracteres_repetidos)
 }
 
-caracter_repetido_30 <- caracteres_repetidos(texto, 31)
+caracter_repetido_30 <- caracteres_repetidos(texto, 30)
 
 if (length(caracter_repetido_30) > 0) {
   print(paste("El carácter que se repite exactamente 30 veces en el texto es:", caracter_repetido_30))
@@ -42,7 +44,22 @@ print(caracteres_no_vocales) #937.
 
 
 ```{r}
+library(readr)
+Nosotros <- read_delim("data/Nosotros.tsv", 
+    delim = "\t", escape_double = FALSE, 
+    trim_ws = TRUE)
 
+
+
+
+# Calcular la suma de las edades en años
+suma_edades <- sum(Nosotros$Age)
+
+# Redondear el resultado a 3 decimales
+suma_edades <- round(suma_edades, 3)
+
+# Imprimir el resultado
+suma_edades
 ```
 
 
